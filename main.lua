@@ -1,50 +1,45 @@
-
 display.setDefault( "background", 20, 30, 0 )
 
 
-local myText = display.newText( "Calculator", 160, -10, native.systemFont, 50 )
-myText:setFillColor(80, 40, 0 )
+local displayText = display.newText( " Pi Calculator", 160, -10, native.systemFont, 40 )
+displayText:setFillColor(0, 40, 50 )
 
-local myText = display.newText( "Input number:", 122, 285, native.systemFont, 32 )
-myText:setFillColor( 40, 50, 0 )
+local displayText = display.newText( "Pi =", 145, 180, native.systemFont, 30 )
+displayText:setFillColor( 0, 40, 50 )
 
-local myText = display.newText( "Pi =...", 145, 410, native.systemFont, 30 )
-myText:setFillColor( 30, 20, 0 )
+local displayText = display.newText( "Input number:", 122, 285, native.systemFont, 30 )
+displayText:setFillColor( 0, 50, 40 )
 
-local calculate = display.newImageRect( "calculatebutton.png", 250, 75 )
-calculate.x = 145
-calculate.y = 90
+local displayText = display.newText( "Created by Emanuel", 145, 410, native.systemFont, 20 )
+displayText:setFillColor( 0, 40, 50 )
 
-local resulttext = display.newText( "result", 160, 470, native.systemFont, 37 )
-resulttext:setFillColor( 60, 200, 0)
+local calculatebutton = display.newImageRect( "calculatebutton.png", 250, 75 )
+calculatebutton.x = 145
+calculatebutton.y = 90
 
-local imputTextfield = native.newTextField( display.contentCenterX, 325, 270, 40 )
-inputTextfield.id = "iteration input"
+local inputTextfield = native.newTextField( display.contentCenterX, 325, 270, 40 )
+inputTextfield.id = "input a number"
+
+local resulttext = display.newText( "Result", 160, 220, native.systemFont, 37 )
+resulttext:setFillColor( 0, 0, 0)
 
 
-
-local function calculateTouch ( event )
-
-	local result
+local function calculatebuttonTouch ( event )
 
 	local input
-
 	local sign
-
-	input = inputTextfield.text
-
-	result = 0
+    local result
 
 	sign = -1
+	result = 0
+	input = inputTextfield.text
+	
 
 	for loop = 1, input, 1 do
-
 		sign=sign*-1
-
 		result = result+4/(loop*2-1)*sign
-
 		resulttext.text = (result)
 	end
-end
+    end
 
-calculate:addEventListener( "touch", calculateTouch )
+calculatebutton:addEventListener( "touch", calculatebuttonTouch )
